@@ -17,7 +17,7 @@ namespace StackOverflow {
    #endregion References
 
    class JsonToObject {
-      static void Main (string[] args) {
+      public static void MainJsonToObject () {
 
          string url = "http://ticlotel.com/layered-medium-curly-hairstyles-2017.html";
          string QUrl = "https://api.pinterest.com/v1/urls/count.json?callback=receiveCount&url=" + url;

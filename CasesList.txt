@@ -1,3 +1,5 @@
 ﻿IndexOutOfBounds - https://stackoverflow.com/questions/47407102/index-array-errors#47407102
 
 JsonToObject - https://stackoverflow.com/questions/47407799/unable-to-convert-json-string-to-json-object-in-c-sharp
+
+GetEnumValue - https://stackoverflow.com/questions/56964790/how-to-get-enum-value-by-parsing-another-enum-with-same-named-constants

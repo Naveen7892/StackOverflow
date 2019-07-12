@@ -15,7 +15,7 @@ namespace StackOverflow {
 
    #endregion References
    class IndexOutOfBounds {
-      static void MainIndexOutOfBounds (string[] args) {
+      public static void MainIndexOutOfBounds () {
 
          var cbListStudents = new List<String> ();
          var cbListCourses = new List<String> ();
