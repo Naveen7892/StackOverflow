@@ -12,7 +12,7 @@ namespace StackOverflow {
          //Console.WriteLine ("Json to Object");
          //JsonToObject.MainJsonToObject ();
          Console.WriteLine ("Get Enum Value");
-         GetEnumValue.MainGetEnumValue ();
+         GetEnumValue.MainGetEnumValue (new[] { "-hg" });
       }
    }
 }
