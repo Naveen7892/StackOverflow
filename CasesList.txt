@@ -3,3 +3,9 @@
 JsonToObject - https://stackoverflow.com/questions/47407799/unable-to-convert-json-string-to-json-object-in-c-sharp
 
 GetEnumValue - https://stackoverflow.com/questions/56964790/how-to-get-enum-value-by-parsing-another-enum-with-same-named-constants
+
+GhostMouseMove - https://stackoverflow.com/questions/56995127/why-mousemove-event-occurs-after-mouseup-event/57159958#57159958
+
+CastingFromListOfTypes - https://stackoverflow.com/questions/57183288/c-sharp-try-to-cast-strings-from-a-list-of-types
+
+ReflectionForGetterMethods - https://stackoverflow.com/questions/57202264/how-to-recognize-which-methods-are-getters-and-setters#57202481
