@@ -33,8 +33,13 @@ namespace StackOverflow {
          //ParseVeryLargeNumber.MainParseVeryLargeNumber ();
          //Console.WriteLine ("ReflectionForGetterMethods");
          //ReflectionForGetterMethods.MainReflectionForGetterMethods ();
-         Console.WriteLine ("CompareTwoListObjects");
-         CompareTwoListObjects.MainCompareTwoListObjects ();
+         //Console.WriteLine ("CompareTwoListObjects");
+         //CompareTwoListObjects.MainCompareTwoListObjects ();
+         //Console.WriteLine ("ListView disable repaint");
+         //ListViewRepaint lwr = new ListViewRepaint ();
+         //lwr.ShowDialog ();
+         Console.WriteLine ("Parsing string");
+         ParsingString.MainParsingString ();
          Console.ReadKey ();
       }      
    }
