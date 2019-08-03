@@ -13,3 +13,5 @@ ReflectionForGetterMethods - https://stackoverflow.com/questions/57202264/how-to
 Parsing string - https://stackoverflow.com/questions/57308342/best-way-to-parse-string#57308342
 
 JsonSerializeBoolean - https://stackoverflow.com/questions/57310279/json-serializer-when-boolean-value-set-to-false-key-is-missing-on-frontend#57310279
+
+UpdateArrayInDictionary - https://stackoverflow.com/questions/57336928/append-array-values-to-dictionary-if-key-exists

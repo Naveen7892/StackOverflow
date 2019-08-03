@@ -40,8 +40,10 @@ namespace StackOverflow {
          //lwr.ShowDialog ();
          //Console.WriteLine ("Parsing string");
          //ParsingString.MainParsingString ();
-         Console.WriteLine ("Json Serialized Boolean");
-         JsonSerializeBoolean.MainJsonSerializeBoolean ();
+         //Console.WriteLine ("Json Serialized Boolean");
+         //JsonSerializeBoolean.MainJsonSerializeBoolean ();
+         Console.WriteLine ("Update Array in Dictionary");
+         UpdateArrayInDictionary.MainUpdateArrayInDictionary ();
          Console.ReadKey ();
       }      
    }
