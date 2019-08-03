@@ -57,6 +57,7 @@
     <Compile Include="GetEnumValue.cs" />
     <Compile Include="GhostMouseMove.cs" />
     <Compile Include="IndexOutOfBounds.cs" />
+    <Compile Include="JsonSerializeBoolean.cs" />
     <Compile Include="JsonToObject.cs" />
     <Compile Include="ListViewRepaint.cs">
       <SubType>Form</SubType>

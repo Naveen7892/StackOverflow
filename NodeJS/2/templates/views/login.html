@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<body>	
+	login
+	
+	<button id="authBtn" type="button">Auth</button>
+	<script>
+		window.onload = (e) => {
+		};
+		
+		document.getElementById("authBtn").addEventListener("click", e => {
+			callAuth();
+		});
+		
+		function callAuth() {
+			var data = {};
+			fetch("http://localhost:3000/auth", {
+				method: 'POST',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data)
+			}).then(response => {
+				console.log(response);
+				window.location.href = response.url;
+			});
+		}
+	</script>
+</body>
+
+</html>

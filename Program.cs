@@ -38,8 +38,10 @@ namespace StackOverflow {
          //Console.WriteLine ("ListView disable repaint");
          //ListViewRepaint lwr = new ListViewRepaint ();
          //lwr.ShowDialog ();
-         Console.WriteLine ("Parsing string");
-         ParsingString.MainParsingString ();
+         //Console.WriteLine ("Parsing string");
+         //ParsingString.MainParsingString ();
+         Console.WriteLine ("Json Serialized Boolean");
+         JsonSerializeBoolean.MainJsonSerializeBoolean ();
          Console.ReadKey ();
       }      
    }

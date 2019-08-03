@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<body>	
+	<div id="currencyType">
+		<select id="fromCurrency">
+		  <option value="USD">USD</option>
+		  <option value="GBP">GBP</option>
+		</select>
+		<select id="toCurrency">
+		  <option value="USD">USD</option>
+		  <option value="GBP">GBP</option>
+		</select>
+	</div>
+	<button type="button" id="getCurrency">Get Currency</button>
+	
+	
+	<div id="currency" name="currency" type="text"></div>
+	
+	
+	<script>
+		const currency = document.querySelector("#currency");
+		const btn = document.getElementById("getCurrency");
+		function refreshPage() {
+			window.location.reload();
+		}
+		btn.addEventListener("click", e => {
+			var fromCurrency = document.getElementById("fromCurrency");
+			fromCurrency = fromCurrency.options[fromCurrency.selectedIndex].value;
+			var toCurrency = document.getElementById("toCurrency");
+			toCurrency = toCurrency.options[toCurrency.selectedIndex].value;
+			var data = {
+				fromCurrency: fromCurrency,
+				toCurrency: toCurrency
+			};
+			// calls the API with POST method with data in it
+			fetch("http://localhost:3000/currency", {
+				method: 'POST',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data)
+			}).then(response => {
+				response.json().then(data => {
+					if (data.error) {
+					  console.log(data.error);
+					} else {
+					  currency.textContent = "1 " + fromCurrency + " = " + data.body + " " + toCurrency;
+					}
+				});
+			});
+		});
+	</script>
+</body>
+
+</html>
