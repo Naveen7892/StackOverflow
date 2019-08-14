@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+HI
+
+<ul id="tutes_1">
+</ul>
+
+
+<script>
+
+function studatapopulate(id, data) {
+    var ref = data[id].ref;
+    var exam = data[id].exam;
+
+    var tutes = "";
+    jQuery.each(data[id].tutedata, function (index, value) {
+        tutes += '<li>'+value.subj+'</li>';
+        tutes += '<ul>';
+        var i;
+        for (i = 1; i < 21; ++i) {
+            var tutesTemp = '<li><label class="tutebtn" for="'+id+'_'+value.id+'_'+i+'"><input type="checkbox" id="'+id+'_'+value.id+'_'+i+'" data-subj="'+value.id+'" value="'+i+'"';
+            jQuery.each(value.issuedtutes, function (indexa, valuae) {
+                if (valuae == i) {
+					console.log(jQuery(tutesTemp).find('label'));
+                    tutesTemp += ' checked="checked" disabled="disabled"';
+					console.log(jQuery(tutesTemp).find('label'));
+                }
+            });
+			tutes += tutesTemp;
+            tutes += '/> '+i+'</label></li>';
+        }
+        tutes += '</ul>';
+    });
+    jQuery("#tutes_"+id).append('<ul>'+tutes+'</ul>');
+	$("input:checkbox:checked").parent().addClass("tutegot")
+	/* jQuery.each(data[id].tutedata, function (index, value) {
+		for (i = 1; i < 21; ++i) {
+			jQuery.each(value.issuedtutes, function (indexa, valuae) {
+			  if (valuae == i) {
+				jQuery('#'+id+'_'+value.id+'_'+i).closest('label').addClass('tutegot');
+			  }
+			});
+		}
+	});
+	*/
+}
+
+var a = {
+	1: {
+		ref: 123,
+		exam: 123,
+		tutedata: [
+			{
+			    id: 1001,
+				subj: 'a',
+				issuedtutes: [
+					"5", "9", "16"
+				],
+			},
+			{
+			    id: 1002,
+				subj: 'b',
+				issuedtutes: [
+					"5", "9", "16"
+				],
+			}
+		]
+	}
+};
+
+function studatapopulate2(id, data) {
+  var ref = data[id].ref;
+  var exam = data[id].exam;
+
+  var tutes = "";
+  jQuery.each(data[id].tutedata, function(index, value) {
+    tutes += '<li>' + value.subj + '</li>';
+    tutes += '<ul>';
+    var i;
+    for (i = 1; i < 21; ++i) {
+      var tutesTemp = '<li><label class="tutebtn" for="' + id + '_' + value.id + '_' + i + '"><input type="checkbox" id="' + id + '_' + value.id + '_' + i + '" data-subj="' + value.id + '" value="' + i + '"';
+
+      jQuery.each(value.issuedtutes, function(indexa, valuae) {
+		// jQuery(tutesTemp).find('label').addClass('tutegot');
+		tutesTemp = tutesTemp.replace("tutebtn","tutebtn tutegot")
+        /* if (false && valuae == i) {
+		console.log(jQuery(tutesTemp).find('label'));
+          jQuery(tutesTemp).find('label').addClass('tutegot');
+          tutesTemp += ' checked="checked" disabled="disabled"';
+		  console.log(jQuery(tutesTemp).find('label'));
+        }
+		*/
+      });
+
+      tutesTemp += '/> ' + i + '</label></li>';
+      tutes += tutesTemp
+	  
+	  // console.log(tutesTemp);
+    }
+    tutes += '</ul>';
+  });
+  jQuery("#tutes_" + id).append('<ul>' + tutes + '</ul>');
+	console.log(jQuery("#tutes_" + id));
+}
+
+studatapopulate (1, a);
+
+</script>
+</body>
+</html>
+

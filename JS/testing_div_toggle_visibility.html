@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+	#button1,
+	#button2,
+	#button3 {
+	  width: 50px;
+	  height: 50px;
+	  background: lightblue;
+	  margin: 5px;
+	  cursor: pointer;
+	}
+
+	#content1,
+	#content2,
+	#content3 {
+	  width: 100px;
+	  height: 50px;
+	  background: blue;
+	  color: white;
+	  margin: 5px;
+	}
+</style>
+</head>
+<body>
+
+<div id="button1">button 1</div>
+<div id="button2">button 2</div>
+<div id="button3">button 3</div>
+<div id="content1">content 1</div>
+<div id="content2">content 2</div>
+<div id="content3">content 3</div>
+
+<script>
+	var button1 = document.getElementById("button1");
+	var button2 = document.getElementById("button2");
+	var button3 = document.getElementById("button3");
+	var content1 = document.getElementById("content1");
+	var content2 = document.getElementById("content2");
+	var content3 = document.getElementById("content3");
+	content1.style.display = "none";
+	content2.style.display = "none";
+	content3.style.display = "none";
+	button1.addEventListener("click", () => activeDiv = (activeDiv === "content1") ? "": "content1");
+	button2.addEventListener("click", () => activeDiv = (activeDiv === "content2") ? "": "content2");
+	button3.addEventListener("click", () => activeDiv = (activeDiv === "content3") ? "": "content3");
+	button1.addEventListener("click", openDivGroup);
+	button2.addEventListener("click", openDivGroup);
+	button3.addEventListener("click", openDivGroup);
+
+	var activeDiv = '';
+	function openDivGroup ($event) {
+		var contentIdArray = jQuery ("[id^=content]");
+		for (var i = 0; i < contentIdArray.length; i++) {
+			if (activeDiv === contentIdArray[i].id) contentIdArray[i].style.display = 'block';
+			else contentIdArray[i].style.display = 'none';
+		}
+	}
+	</script>
+</body>
+</html>

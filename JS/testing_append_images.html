@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+<script>
+var images = [
+	{
+		url: "sample11.jpg",
+		name: "Image 1"
+	},
+	{
+		url: "sample11.jpg",
+		name: "Image 2"
+	},
+	{
+		url: "sample11.jpg",
+		name: "Image 3"
+	}
+];
+
+appendImagesToDivInBody (images);
+
+function appendImagesToDivInBody (images) {
+	// create div
+	var div = document.createElement("DIV");
+	// add id attribute
+	var att = document.createAttribute("id"); att.value = "imageDiv";
+	div.setAttributeNode(att);
+	div.innerHTML = "IMAGES ARRAY";
+	// append to child
+	document.body.appendChild(div);
+	
+	// add images to div
+	for (var i = 0; i < images.length; i++) {
+		var divElement = document.getElementById ("imageDiv");
+		divElement.appendChild(document.createElement("br"));
+		var img = document.createElement("IMG");
+		img.src = images[i].url;
+		img.height = 100;
+		img.width = 100;
+		img.alt = images[i].name;
+		divElement.appendChild (img);
+	}
+	
+}
+</script>
+</body>
+</html>

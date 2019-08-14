@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+</style>
+</head>
+<body>
+<div class="form--group">
+    <input class="thename" name="name[]" type="text" />
+    <input type="text" class="date date_of_birth" name="date[]" />
+</div>
+<div class="form--group">
+    <input class="thename" name="name[]" type="text" />
+    <input type="text" class="date_of_birth" name="date[]" />
+</div>
+<a href="javascript:;" id="stepbirth" class="disabled">Next step</a>
+
+<script>
+"use strict";
+
+function formIsInvalid() {
+  var flag = false, name, date;
+  $('.form--group').each(function() {
+	if (flag) return;
+    name = $(this).find('.thename').val();
+	date = $(this).find('.date_of_birth').val();
+    date = date !== undefined && $(this).find('.date_of_birth').val().length == 10;
+	flag = !name || !date;
+  });
+  console.log(name, date, flag);
+  return flag
+}
+
+//Toggle disbaled class
+$('.form--group').on('keyup','input', function() {
+  //use other static element or document if not works
+  $('#stepbirth').toggleClass('disabled', formIsInvalid());
+});
+</script>
+</body>
+</html>

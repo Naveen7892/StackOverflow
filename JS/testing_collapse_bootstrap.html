@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="col-12 mt-2">
+ <span class="collapsed" name="serviceCollapse" data-target="#service1" data-toggle="collapse">
+  <label class="text-custom-primary bold-300">Mostrar más servicios </label>
+  <span class="d-inline">arrowDownSvgIcon</span>
+  <span class="d-none">arrowUpSvgIcon</span>
+ </span>
+
+ <div id="service1" class="collapse mt-3">
+  collapsable
+ </div>         
+</div>
+
+<script>
+$(document).ready(function() { 
+
+	//console.log($(this));
+	//console.log($(this).find('[data-target="#service1]"'));
+	//console.log($(this).find('[data-target="#service1]"').attr("data-target"));
+	var target = $('span[name="serviceCollapse"]').attr("data-target");
+
+	$(target).on('hide.bs.collapse', function () {
+		console.log("hide.bs.collapse");
+		var label = $(this).find("label");
+		var span = $(this);
+		label.text("Mostrar más servicios ");
+		var arrowUp = span.find(".d-inline");
+		var arrowDown = span.find(".d-none");
+		arrowUp.removeClass("d-inline");
+		arrowUp.addClass("d-none");
+		arrowDown.removeClass("d-none");
+		arrowDown.addClass("d-inline");
+	});
+
+	$(target).on('show.bs.collapse', function () {
+		console.log("show.bs.collapse");
+		var label = $(this).find("label");
+		var span = $(this);
+		label.text("Mostrar menos servicios ");
+		var arrowDown = span.find(".d-inline");
+		var arrowUp = span.find(".d-none");
+		arrowDown.removeClass("d-inline");
+		arrowDown.addClass("d-none");
+		arrowUp.addClass("d-inline");
+		arrowUp.removeClass("d-none");
+	});
+
+	$('span[name="serviceCollapse"]').click(function() {
+		console.log($(this).attr("class"));
+		if ($(this).attr("class") === "collapsed") alert ("show");
+		else alert("hide");
+	}); 
+});	
+	
+</script>
+</body>
+</html>

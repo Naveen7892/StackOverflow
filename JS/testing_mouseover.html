@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+	.overlay-desc {
+	  background-color: black;
+	  z-index: 5;
+	  width: 50%;
+	  height: 5%;
+	  position: absolute;
+	  opacity: 0;
+	}
+</style>
+</head>
+<body>
+<div id="test">ABCD</div>
+
+<div class="pro_outer_box">
+  <div class="overlay-desc" style="opacity: 0">
+  </div>
+  <a href="#">
+    <img alt="Elit Royal Blue Border">
+  </a>
+</div>
+
+<div class="hover_fly">
+	afdasfsfsf
+  <a class="view_button hover_fly_btn btn-spin" href="#" title="more info" rel="nofollow">
+    <div class="hover_fly_btn_inner"> <span>more info</span></div>
+  </a>
+</div>
+
+<div class="pro_outer_box">
+  <div class="overlay-desc" style="opacity: 0">
+  </div>
+  <a href="#">
+    <img alt="Elit Royal Blue Border 2">
+  </a>
+</div>
+
+<div class="hover_fly">
+	afdasfsfsf
+  <a class="view_button hover_fly_btn btn-spin" href="#" title="more info" rel="nofollow">
+    <div class="hover_fly_btn_inner"> <span>more info</span></div>
+  </a>
+</div>
+
+<script>
+/*
+$(".hover_fly_btn").mouseover(function() {
+  // $(this).css("background-color", "green");
+  
+  $('.overlay-desc').css({
+    opacity: 0.1
+  });
+});
+
+$(".hover_fly_btn").mouseout(function() {
+  $('.overlay-desc').css({
+    opacity: 0
+  });
+});
+*/
+
+$(".hover_fly").mouseover(function() {
+  $(this).closest(".hover_fly").prev('.pro_outer_box').find(".overlay-desc").css({
+    opacity: 0.5
+  });
+});
+
+$(".hover_fly").mouseout(function() {
+  $(this).closest(".hover_fly").prev('.pro_outer_box').find(".overlay-desc").css({
+    opacity: 0
+  });
+});
+
+
+
+
+</script>
+</body>
+</html>

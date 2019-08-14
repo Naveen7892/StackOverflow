@@ -1,0 +1,34 @@
+<script>
+const initialState = {
+    items: [{
+        id: 254,
+        quantity: 1
+      },
+      {
+        id: 493,
+        quantity: 1
+      }
+    ],
+  };
+  
+const payload = {
+    id: 254
+  };
+  
+  
+console.log (updateProduct(initialState, payload));
+
+function updateProduct(state, action) {
+var newState = JSON.parse(JSON.stringify(state));
+var isFound = false;
+newState.items.forEach(item => {
+  for (var prop in item) {
+	if (prop === 'id' && item[prop] == action.id) {
+	  item.quantity++; isFound = true; break;
+	}
+  }
+  if (isFound) return;
+});
+return newState;
+}
+</script>

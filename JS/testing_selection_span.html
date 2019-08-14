@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style> 
+</style>
+</head>
+<body>
+
+<p id="selectionArea">
+Hello world! This is a sample application.
+</p>
+
+<script>
+	
+	
+	document.onmouseup = document.onkeyup = document.onselectionchange = function() {
+		var selectedValue = getSelectionText();
+		console.log(selectedValue);
+		// document.getElementById("selectionArea").value = getSelectionText();
+	};
+	/*
+	function getSelectionText() {
+		var text = "";
+		var activeEl = document.activeElement;
+		var activeElTagName = activeEl ? activeEl.tagName.toLowerCase() : null;
+		if (
+		  (activeElTagName == "textarea") || (activeElTagName == "input" &&
+		  /^(?:text|search|password|tel|url)$/i.test(activeEl.type)) &&
+		  (typeof activeEl.selectionStart == "number")
+		) {
+			text = activeEl.value.slice(activeEl.selectionStart, activeEl.selectionEnd);
+		} else if (window.getSelection) {
+			// console.log(window.getSelection);
+			text = window.getSelection().toString();
+		}
+		return text;
+	}
+ */
+	
+	/* document.getElementById("selectionArea").onmouseup = document.getElementById("selectionArea").onkeyup = document.getElementById("selectionArea").onselectionchange = function() {
+	  document.getElementById("selectionArea").value = getSelectionText();
+	};
+	*/
+	
+	function getSelectionText() {
+		var text = "";
+		var activeElement = document.getElementById("selectionArea");
+		// var activeElement = document.activeElement;
+		var activeElementTagName = activeElement ? activeElement.tagName.toLowerCase() : null;
+		console.log(text, activeElement, activeElementTagName);
+		if (activeElementTagName === 'p' && activeElement) {
+			text = activeElement.value.slice (activeElement.selectionStart, activeElement.selectionEnd);
+			console.log(window.getSelection());
+			console.log(text, activeElement.selectionStart, activeElement.selectionEnd);
+		}
+	} 
+	
+</script>
+</body>
+</html>

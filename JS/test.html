@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<p id='countdown-number'>abcd</p>
+<script>
+  var countdownNumberEl = document.getElementById('countdown-number');
+  var countdown = 5;
+
+  countdownNumberEl.innerHTML = countdown;
+
+  var intervalTimer = setInterval(function() {
+	if (countdown < 0) { clearInterval(intervalTimer); alert("Stopped"); return; }
+    else countdownNumberEl.innerHTML = countdown;
+	countdown--;
+  }, 1000);
+  
+  
+</script>
+
+</body>
+</html>
