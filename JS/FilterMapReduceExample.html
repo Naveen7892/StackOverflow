@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+</style>
+</head>
+<body>
+
+<!-- https://medium.com/the-renaissance-developer/concepts-of-functional-programming-in-javascript-6bc84220d2aa -->
+
+<script>
+	let shoppingCart = [
+	  { productTitle: "Functional Programming", type: "books", amount: 10 },
+	  { productTitle: "Kindle", type: "electronics", amount: 30 },
+	  { productTitle: "Kindle2", type: "electronics", amount: 40 },
+	  { productTitle: "Kindle3", type: "electronics", amount: 20 },
+	  { productTitle: "Shoes", type: "fashion", amount: 20 },
+	  { productTitle: "Clean Code", type: "books", amount: 60 }
+	];
+	
+	console.log (shoppingCart);
+	
+	// We want the total amount of all books in our shopping cart. Simple as that. The algorithm?
+	// const getByType = t => t.type === 'books';
+	function ofType (product) {
+		console.log (product, this);
+		// console.log (typeof product.type,typeof this);
+		return product.type == this; // string == object
+	}
+	
+	function filterByType (shoppingCart, type) {
+		return shoppingCart.filter (ofType, type);
+	}
+	
+	const getAmount = (product) => product.amount;
+	
+	let bookData = filterByType (shoppingCart, 'electronics');
+	console.log (bookData);
+	document.write (JSON.stringify (bookData) + "<br/><br/>");
+	
+	let bookAmounts = bookData.map (getAmount);
+	console.log (bookAmounts);
+	document.write (bookAmounts + "<br/><br/>");
+	
+	
+	const getSummation = (accumulator, initialAmount) => accumulator + initialAmount;
+	let bookAmountSummation = bookAmounts.reduce (getSummation, 0);
+	console.log(bookAmountSummation);
+	document.write (bookAmountSummation + "<br/><br/>");
+	
+	
+	function getTotalAmount (shoppingCart, filterByType) {
+		return shoppingCart
+		.filter (ofType (shoppingCart, filterByType))
+		.map (bookAmounts)
+		.reduce (getSummation, 0);
+	}
+	console.log (getTotalAmount (shoppingCart, "books"));
+	document.write (getTotalAmount (shoppingCart, "books"));
+</script>
+</body>
+</html>

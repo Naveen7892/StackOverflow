@@ -23,8 +23,8 @@ namespace StackOverflow {
          //IndexOutOfBounds.MainIndexOutOfBounds ();
          //Console.WriteLine ("Json to Object");
          //JsonToObject.MainJsonToObject ();
-         //Console.WriteLine ("Get Enum Value");
-         //GetEnumValue.MainGetEnumValue (new[] { "-hg" });
+         Console.WriteLine ("Get Enum Value");
+         GetEnumValue.MainGetEnumValue (new[] { "-hg" });
          //Console.WriteLine ("Ghost Mouse Move");
          //RunApplication ();
          //Console.WriteLine ("Casting from list of types:");
@@ -42,8 +42,13 @@ namespace StackOverflow {
          //ParsingString.MainParsingString ();
          //Console.WriteLine ("Json Serialized Boolean");
          //JsonSerializeBoolean.MainJsonSerializeBoolean ();
-         Console.WriteLine ("Update Array in Dictionary");
-         UpdateArrayInDictionary.MainUpdateArrayInDictionary ();
+         //Console.WriteLine ("Update Array in Dictionary");
+         //UpdateArrayInDictionary.MainUpdateArrayInDictionary ();
+         //Console.WriteLine ("Handle JSON without Library");
+         //HandleJsonWithoutLibrary.MainHandleJsonWithoutLibrary ();
+         //Console.WriteLine ("Read Text File With Numbers");
+         //ReadTextFileWithNumbers.MainReadTextFileWithNumbers ();
+
          Console.ReadKey ();
       }      
    }

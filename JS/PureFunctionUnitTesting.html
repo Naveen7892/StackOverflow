@@ -1,0 +1,75 @@
+<script>
+`
+https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36
+
+https://codepen.io/ericelliott/pen/MyojLq?editors=0010
+
+What is a pure function?
+
+* Given the same input, will always return the same output.
+* Produces no side effects.
+* Relies on no external state.
+
+Pure functions map between arguments and return values.
+
+Fork this pen and turn the impure functions into pure
+functions.
+
+Make all the unit tests pass without changing the tests.
+`
+
+// setPrice(item: Object, price: Number) => item: Object
+const setPrice = (item, price) => {
+  let newObj = lodash.cloneDeep(item);
+  Object.assign (newObj, price);
+  return newObj;
+}
+
+// addToCart(cart: Array, item: Object) => cart: Array
+const addToCart = (cart, item) => {
+  let newObj = lodash.cloneDeep();
+  newObj.push(item);
+  //cart.push(item);
+  return newObj;
+};
+
+test('setPrice()', assert => {
+  const msg = 'setPrice() should set the price in the given item object.';
+  const immutable = 'original should not be mutated';
+
+  const item = {
+    name: 'test',
+    price: 30
+  };
+  const copy = Object.assign({}, item);
+
+  const actual = setPrice(item, 50);
+  const expected = {
+    name: 'test',
+    price: 50
+  };
+
+  assert.deepEqual(actual, expected, msg);
+  assert.deepEqual(item, copy, immutable);
+  assert.end();
+});
+
+test('addToCart()', assert => {
+  const msg = 'should add item to cart';
+  const immutable = 'original should not be mutated';
+
+  const originalCart = [];
+  const item = {
+    name: 'Violator',
+    price: 30
+  };
+  const copy = originalCart.slice();
+  
+  const actual = addToCart(originalCart, item);
+  const expected = [item];
+
+  assert.deepEqual(actual, expected, msg);
+  assert.deepEqual(originalCart, copy, immutable);
+  assert.end();
+});
+</script>

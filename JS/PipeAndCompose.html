@@ -1,0 +1,68 @@
+<script>
+
+	// https://medium.com/free-code-camp/pipe-and-compose-in-javascript-5b04004ac937
+
+	getName = (person) => person.name
+	
+	getName({ name: 'Buckethead' })
+	// 'Buckethead'
+
+	uppercase = (string) => string.toUpperCase()
+	uppercase('Buckethead')
+	// 'BUCKETHEAD'
+	
+	uppercase(getName({ name: 'Buckethead' }))
+	
+	get6Characters = (string) => string.substring(0, 6)
+	get6Characters('Buckethead')
+	// 'Bucket'
+	
+	get6Characters(uppercase(getName({ name: 'Buckethead' })))
+    // 'BUCKET'
+	
+	reverse = (string) => string
+	  .split('')
+	  .reverse()
+	  .join('')
+	reverse('Buckethead')
+	// 'daehtekcuB'
+	
+	reverse(get6Characters(uppercase(getName({ name: 'Buckethead' }))))
+	// 'TEKCUB'
+	
+	// -------------------------------------PIPE
+	// ------------------------------------ DEBUGGER
+	pipe = (...functions) => (value) => {
+	  debugger;
+	  return functions
+		.reduce((currentValue, currentFunction) => {
+		   debugger;
+		   return currentFunction(currentValue);
+		}, value)
+	}
+	pipe(
+	  getName,
+	  uppercase,
+	  get6Characters,
+	  reverse 
+	)({ name: 'Buckethead' })
+	// 'TEKCUB'
+	
+	// pipe = (...fns) => x => fns.reduce((v, f) => f(v), x)
+	
+	
+	
+	// -------------------------------------- COMPOSE
+	compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);
+	
+	let cValue = compose(
+	  reverse,
+	  get6Characters,
+	  uppercase,
+	  getName,
+	)({ name: 'Buckethead' })
+	
+	console.log (cValue);
+	
+	
+</script>

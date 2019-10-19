@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style> 
+</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				Bid Price Avg:
+			</td>
+			<td>
+				<input type="text" id="bidPriceAvg" value="100" />
+			</td>
+			<td>
+				Quantity Purchased:
+			</td>
+			<td>
+				<input type="text" id="qtyPurchased" value="100" />
+			</td>
+			<td>
+				Average Price:
+			</td>
+			<td>
+				<label id="avgPrice">
+					100
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Current Price:
+			</td>
+			<td>
+				<input type="text" id="currentPrice" value="50" />
+			</td>
+			<td>
+				P/L:
+			</td>
+			<td>
+				<input type="text" id="priceProfitLoss" value="-5000" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Expected increase of price in %
+			</td>
+			<td>
+				<label id="expectedPriceIncreasePerc">
+					0
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Expected quantity to be purchased to reduce increase in price percentage
+			</td>
+			<td>
+				<label id="expectedQuantityIncrease">
+					0
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" id="recalculateBtn">Recalculate</button>
+			</td>
+		</tr>
+	</table>
+
+<script>
+
+// REFERENCE:
+// https://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-only-if-necessary
+
+	$(document).ready(function() {
+		class OutputSet {
+			constructor(currentPrice, qtyToPurchase) {
+				this.currentPrice = currentPrice;
+				this.quantityToPurchase = qtyToPurchase;
+			}
+		}
+		
+		$("#recalculateBtn").on("click", function($event) {
+			var bidPriceAvg = $("#bidPriceAvg").val();
+			var qtyPurchased = $("#qtyPurchased").val();
+			var totalPrice = bidPriceAvg * qtyPurchased;
+			var avgPrice = totalPrice / qtyPurchased;
+			$("#avgPrice").text(avgPrice);
+			var currentPrice = $("#currentPrice").val();
+			var priceProfitLoss = (currentPrice * qtyPurchased) - totalPrice;
+			$("#priceProfitLoss").text(priceProfitLoss);
+			var currentPrice = $("#currentPrice").val();
+			var expectedPriceIncreasePerc = (avgPrice * 100 / currentPrice); //- 100
+			var mininumAmountToAvoidLoss = (currentPrice * expectedPriceIncreasePerc / 100);
+			$("#expectedPriceIncreasePerc").text((expectedPriceIncreasePerc - 100) + "(Amount should become: " + mininumAmountToAvoidLoss + ")");
+			console.log(bidPriceAvg, qtyPurchased, avgPrice, currentPrice, priceProfitLoss, expectedPriceIncreasePerc, expectedQuantityIncrease);
+			var maxPrice = +currentPrice + +(mininumAmountToAvoidLoss * 2 / 100); // 2%
+			console.log(qtyPurchased, avgPrice, currentPrice, maxPrice);
+			findMinimumQuantityToPurchaseToReduceLoss (+qtyPurchased, +avgPrice, +currentPrice, +maxPrice);
+		});
+		
+		function findMinimumQuantityToPurchaseToReduceLoss (qtyPurchased, avgPrice, currentPrice, maxPrice) {
+			var outputList = [];
+			var total = avgPrice * qtyPurchased;
+			// console.log(total);
+			for (var newPrice = currentPrice; newPrice <= maxPrice; newPrice++) {
+				// console.log(newPrice);
+				var newQty = 1;
+				var newTotal = newQty * newPrice;
+				var r = 100;
+				while(r >= 1) {
+					newQty+= 100;
+					newTotal = newQty * newPrice;
+					// console.log(newTotal);
+					// r = +(Math.round(((total + newTotal) / newQty) + "e+2") + "e-2");
+					var newAvg = (total + newTotal) / (qtyPurchased + newQty);
+					r = Math.round(newAvg * 100 / currentPrice, 2) - 100;
+					// console.log(r);
+				}
+				var obj = new OutputSet (newPrice, newQty);
+				outputList.push(obj);
+			}
+			console.log(outputList);
+		}
+	});
+	
+</script>
+</body>
+</html>
